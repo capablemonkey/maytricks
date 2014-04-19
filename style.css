@@ -68,12 +68,20 @@
 }
 
 #console {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 96%;
+  height: 250px;
+  margin: 2%;
   padding: 10px;
   color: white;
-  font-family: 'Open Sans';
+  font-family: 'Cousine';
+  overflow-y: scroll;
+}
+
+.consoleLine {
+  overflow: hidden;
+  width: 100%;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 body {
