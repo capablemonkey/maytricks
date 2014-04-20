@@ -45,6 +45,7 @@ function initConsole() {
 
 		// if backspace
 		if (key === 8 || key === 46) {
+			e.preventDefault();
 			return backspace();
 		}
 	})
