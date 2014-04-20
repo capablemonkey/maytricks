@@ -16,6 +16,13 @@
   	-o-user-select: none; 
     
 }
+
+@-moz-document url-prefix() {
+    #lines{
+    opacity: 0.4;
+}
+}
+
 a:-webkit-any-link {
   color: inherit;
 }
