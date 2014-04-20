@@ -74,6 +74,8 @@ function initConsole() {
 		}
 	}
 
+	// TODO: implement clear command
+
 	function enter() {
 		lastLine = getLastLine()
 		input = lastLine.html().slice(INPUT_HEAD.length);
