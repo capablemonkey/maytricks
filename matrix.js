@@ -1,7 +1,7 @@
 ASCII_BEGIN = 33;
 ASCII_END = 126;
-TEXT_LENGTH = 300;
-CHARS_PER_ROW = 150;
+CHARS_PER_ROW = Math.floor($(window).width() / 8);
+TEXT_LENGTH = CHARS_PER_ROW * 2;
 REFRESH_FREQUENCY = 500;
 
 INPUT_HEAD = 'gordn:~ user$ ';
