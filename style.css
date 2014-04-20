@@ -16,6 +16,9 @@
   	-o-user-select: none; 
     
 }
+a:-webkit-any-link {
+  color: inherit;
+}
 
 #overlay {
 	z-index: -100;
@@ -72,9 +75,17 @@
   height: 250px;
   margin: 2%;
   padding: 10px;
-  color: white;
+  color: rgb(27, 236, 27);
   font-family: 'Cousine';
   overflow-y: scroll;
+}
+
+.blue {
+  color: #55acee;
+}
+
+.red {
+  color: red;
 }
 
 .consoleLine {

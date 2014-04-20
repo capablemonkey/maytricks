@@ -39,10 +39,6 @@ function initMatrix(asciiBegin, asciiEnd, textLength, charsPerRow, refreshInterv
 }
 
 function initConsole() {
-	$("#console").on('click', function(e) {
-
-	})
-
 	// handle special keys:
 	$(document).keydown(function(e) {
 		key = e.which || e.keyCode;
@@ -84,23 +80,31 @@ function initConsole() {
 		newLine(INPUT_HEAD);
 	}
 	function processInput(input) {
-		console.log(input);
-
-		// TODO: implement line break
-
 		commands = {
-			'help': 'Welcome to the console.  Available commands: <br>&nbsp;about: give bio info of Gordon <br>&nbsp;help: commands <br>&nbsp;contact: get contact info',
-			'contact': 'Twitter: @capable_monkey <br>Email: technix1@gmail.com <br>',
-			'bio': "My name's Gordon.  I'm a developer evangelist at Dwolla."
+			'help': 'Welcome to the console.  Available commands: <br>&nbsp;<span class="blue">about</span>: open my about page <br>&nbsp;<span class="blue">bio</span>: give short bio of Gordon <br>&nbsp;<span class="blue">help</span>: commands <br>&nbsp;<span class="blue">contact</span>: get contact info<br>&nbsp;<span class="blue">blog</span>: go to my blog',
+			'contact': '<span class="blue">&nbsp;Twitter: <a href="http://www.twitter.com/capable_monkey">@capable_monkey</a></span> <br><span class="red">&nbsp;Email: &nbsp;&nbsp;<a href="mailto:technix1@gmail.com">technix1@gmail.com</a></span> <br>',
+			'bio': 'About Gordon:<br><br>I like lists, so I\'ll describe myself with a list.  I\'m an avid explorer of restaurants, a lifelong engineer, a shameless comedian, an occasional writer, a chess player, a fanatic of science and technology, and a thinker. I like calling myself a "thinker" because it sounds really pompous, which is the exact effect I\'m trying to achieve.  Perhaps most important, I\'m a Developer Evangelist at Dwolla. I love working there.',
+			'blog': openLink('http://www.sintacks.com/', 'Opening blog in new tab/window...'),
+			'about': openLink('http://about.me/gordonzheng', 'Opening about page in new tab/window...'),
 		}
 
 		if (input in commands) {
-			newLine(commands[input]);
+			if (typeof commands[input] === 'function') commands[input]();
+			else newLine(commands[input]);
 		}
 		else if (input.length > 0) {
 			newLine('-bash(ish): ' + input + ': command not found');
 		}
 	}
+
+	function openLink(link, output) {
+		// returns partial function which will open link
+		return function() {
+			newLine(output);
+			window.open(link,'_blank');
+		}
+	}
+
 	function newLine(output) {
 		k = getLastLine().clone();
 		k.html(output);
